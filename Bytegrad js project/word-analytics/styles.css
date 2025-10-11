@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+textarea {
+    all: unset;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Inter", "sans-serif";
+    background-color: hsla(160, 100%, 50%, 0.137);
+}
+.background{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 254px;
+    width: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(101, 0, 163, 0.7), rgba(24, 120, 175, 0.7)), 
+        url("https://bytegrad.com/course-assets/images/rn-image-1.png");
+}
+.first-heading {
+    font-size: 65px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: white;
+    margin-top: 75px;
+}
+.first-heading--special {
+    font-weight: 300;
+}
+.container {
+    display: flex;
+    width: 1050px;
+    height: 520px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 55px;
+}
+.textarea {
+    resize: none;
+    flex: 2;
+    font: inherit;
+    padding: 30px 40px;
+    font-size: 22px;
+}
+.textarea::placeholder {
+    font-weight: 500;
+    color: rgba(128, 128, 128, 0.733)
+
+}
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1.3;
+    background-color: rgba(0, 255, 170, 0.164);
+}
+.stat {
+    flex: 1 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.stat:nth-child(1), .stat:nth-child(2) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.stat:nth-child(2), .stat:nth-child(4) {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+.stat__number {
+    color: rgb(41, 40, 40);
+    font-weight: 600;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.second-heading {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: rgba(67, 67, 73, 0.925)
+}
+.footer {
+    width: 1050px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.6;
+}
+
+@media (max-width: 1150px) {
+    .container {
+        width: 82vw;
+        flex-direction: column;
+    }
+    .stat:nth-child(1), .stat:nth-child(2), .stat:nth-child(4) {
+        border-left: none;
+        border-bottom: none;
+    }
+    .footer {
+        width: initial;
+        flex-direction: column;
+        align-items: center;
+    }
+    .first-heading {
+        font-size: 7vw
+    }
+}
+
+
