@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/main.tsx" defer></script>
+    
+    <title>Word Analytics</title>
+</head>
+<body>
+    <div id="root">
+
+        <header>
+            <div className="bg"></div>
+            <h1 className="first-heading">Word <span className="first-heading--thin">Analytics</span></h1>
+        </header>
+
+        <main className="container">
+            <div className="textarea">
+                <textarea              
+                    placeholder="Enter your text"
+                    spellCheck="false"
+                    value={text}
+                    onChange={handleChange} >
+                </textarea>
+                <p className="warning">{text}</p>
+            </div>
+            <section className="stats">
+                <section className="stat">
+                    <span className="stat__number">{number}</span>
+                    <h2 className="second-heading">{type}</h2>
+                </section>  
+                <section className="stat">
+                    <span className="stat__number">{number}</span>
+                    <h2 className="second-heading">{type}</h2>
+                </section>  
+                <section className="stat">
+                    <span className="stat__number">{number}</span>
+                    <h2 className="second-heading">{type}</h2>
+                </section>  
+                <section className="stat">
+                    <span className="stat__number">{number}</span>
+                    <h2 className="second-heading">{type}</h2>
+                </section>  
+            </section>
+        </main>
+
+        <footer className="footer">
+            <small>&copy; Copyright by Bytegrad. All rights reserved.</small>
+            <small>Last checked limits: 17 days ago</small>
+        </footer>
+    </div>
+</body>
+</html>
