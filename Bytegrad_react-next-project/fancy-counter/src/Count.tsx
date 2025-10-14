@@ -1,5 +1,9 @@
-export default function Count() {
+type CountProps = {
+    number: number,
+};
+
+export default function Count({ number }: CountProps) {
     return(
-        <div>0</div>
+        <div className='count'>{number}</div>
     )
 }
