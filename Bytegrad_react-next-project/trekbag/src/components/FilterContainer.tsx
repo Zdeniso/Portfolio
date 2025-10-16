@@ -1,9 +1,13 @@
 import Filter from "./Filter";
 
-export default function FilterContainer() {
+type FilterContainerProps = {
+    onFilterChange: (value: string) => void
+};
+
+export default function FilterContainer({onFilterChange}: FilterContainerProps) {
      return (
         <div className="filter-zone">
-            <Filter />
+            <Filter onFilterChange={onFilterChange}/>
         </div>
     )
 }

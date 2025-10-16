@@ -1,11 +1,19 @@
 import FilterChoice from "./FilterChoice";
 
-export default function Filter() {
+type FilterProps = {
+    onFilterChange: (value: string) => void
+};
+
+export default function Filter({ onFilterChange }: FilterProps) {
+    const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        onFilterChange(e.target.value)
+    };
+
     return (
-        <select className="filter">
-            <FilterChoice text='Sort by default' />
-            <FilterChoice text='Sort by packed' />
-            <FilterChoice text='Sort by unpacked' />
+        <select className="filter" onChange={handleFilterChange}>
+            <FilterChoice text='Sort by default' value='default'/>
+            <FilterChoice text='Sort by packed' value='packed'/>
+            <FilterChoice text='Sort by unpacked' value='unpacked'/>
         </select>
     )
 }

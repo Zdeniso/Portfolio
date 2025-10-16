@@ -1,11 +1,18 @@
 import Circles from "./Circles";
 import PackedItem from "./PackedItem";
+import type { Item } from '../utils/types'
 
-export default function ContainerHeader() {
+type ContainerHeaderProps = {
+    items: Item[]
+};
+
+export default function ContainerHeader({ items }: ContainerHeaderProps) {
     return (
         <section className="container__header">
             <Circles />
-            <PackedItem />
+            <PackedItem 
+                items={items}
+            />
         </section>
     )
 }

@@ -1,12 +1,27 @@
 import SecondaryButton from "./SecondaryButton";
 
-export default function SecondaryButtons() {
+type SecondaryButtonsProps = {
+    onMarkAllComplete: () => void,
+    onMarkAllIncomplete: () => void,
+    onReset: () => void,
+    onRemoveAll: () => void,
+};
+
+export default function SecondaryButtons( { 
+    onMarkAllComplete, 
+    onMarkAllIncomplete, 
+    onReset,
+    onRemoveAll 
+}: SecondaryButtonsProps) {
+
     return (
-        <section className="secondary-buttons">
-            <SecondaryButton label="Mark all as complete"/>
-            <SecondaryButton label="Mark all as incomplete"/>
-            <SecondaryButton label="Reset to initial"/>
-            <SecondaryButton label="Remove all items"/>
+        <section 
+            className="secondary-buttons"
+        >
+            <SecondaryButton label="Mark all as complete" onClick={onMarkAllComplete} />
+            <SecondaryButton label="Mark all as incomplete" onClick={onMarkAllIncomplete} />
+            <SecondaryButton label="Reset to initial" onClick={onReset} />
+            <SecondaryButton label="Remove all items" onClick={onRemoveAll} />
         </section>
     )
 }

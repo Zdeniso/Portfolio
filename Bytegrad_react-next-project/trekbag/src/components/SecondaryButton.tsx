@@ -1,7 +1,15 @@
 type SecondaryButtonProps = {
-    label: string
+    label: string,
+    onClick: () => void
 };
 
-export default function SecondaryButton({ label }: SecondaryButtonProps) {
-  return <button className="btn secondary-btn">{label}</button>
+export default function SecondaryButton({ label, onClick }: SecondaryButtonProps) {
+    return (
+        <button 
+            className="btn secondary-btn"
+            onClick={onClick}
+        >{label}
+        </button>
+    )
 }
+    

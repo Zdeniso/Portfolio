@@ -114,7 +114,7 @@ select, select:focus{
     font-size: 12px;
     border-radius: 4px;
     width: 90%;
-    height: 35px;
+    height: 40px;
 }
 .filter:focus{
     border: 2px solid rgb(5, 172, 238);
