@@ -54,25 +54,21 @@ export default function Container() {
     };
 
     const handleMarkAllComplete = () => {
-        const updatedItems = items.map(item => 
-            !item.packed ? { ...item, packed: true} : item
-        );
+        const updatedItems = items.map(item => {
+            return { ...item, packed: true}
+        });
         setItems(updatedItems)
     };
 
     const handleMarkAllIncomplete = () => {
-        const updatedItems = items.map(item => 
-            item.packed ? { ...item, packed: false} : item
-        );
+        const updatedItems = items.map(item => {
+            return { ...item, packed: false}
+        });
         setItems(updatedItems)
     };        
     
     const handleReset = () => {
-        setItems([
-            {id: 1, text: 'Initial| phone charger', packed: true}, 
-            {id: 2, text: 'Initial| tee shirt and pull over', packed: true}, 
-            {id: 3, text: 'Initial| toothbrush', packed: false}
-        ])  
+        setItems(DEFAULT_ITEMS)  
     };
 
     const handleRemoveAll = () => {
