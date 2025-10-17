@@ -1,19 +1,33 @@
-import ContainerHeader from "./ContainerHeader";
-import ContainerMain from "./ContainerMain";
-import { useState } from "react";
+import ContainerHeader from "./ContainerHeader"
+import ContainerMain from "./ContainerMain"
+import { useState, useEffect } from "react"
 import type { Item } from '../utils/types'
+import { DEFAULT_ITEMS } from '../utils/constants'
+
+// INITIALIZATION FUNCTION
+const initItems = () => {
+    try {
+        const stored = localStorage.getItem("Items");
+        const parsed = stored ? JSON.parse(stored) : null;
+        return Array.isArray(parsed) && parsed.length ? parsed : DEFAULT_ITEMS;
+    } catch {
+        return DEFAULT_ITEMS;
+    }
+};
 
 export default function Container() {
-    //STATES
-    const [items, setItems] = useState<Item[]>([
-        {id: 1, text: 'Initial| phone charger', packed: true}, 
-        {id: 2, text: 'Initial| tee shirt and pull over', packed: true}, 
-        {id: 3, text: 'Initial| toothbrush', packed: false}
-    ]);
+    // STATES
+    const [items, setItems] = useState<Item[]>(initItems);
     const [inputValue, setInputValue] = useState<string>("");
-    const [nextId, setNextId] = useState(4);
-  
-    // DERIVED VARIABLE FROM STATES
+
+    // DERIVE VARIABLE
+    const nextId = items.reduce((max, it) => Math.max(max, it.id), 0) + 1;
+
+    // USEEFFECT
+    useEffect(() => {
+        localStorage.setItem("Items", JSON.stringify(items));
+    }, [items]);
+
 
     // EVENT HANDLER
     const handleInputChange = (value: string) => {
@@ -25,7 +39,6 @@ export default function Container() {
         const newItem: Item = { id: nextId, text: inputValue, packed: false };
         setItems([...items, newItem]);
         setInputValue("");
-        setNextId(n => n + 1)
     };
 
     const handleDeleteItemClick = (index: number) => {
