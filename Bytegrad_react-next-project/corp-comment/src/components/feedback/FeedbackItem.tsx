@@ -1,46 +1,41 @@
+import { useState } from "react";
 import { TriangleUpIcon } from "@radix-ui/react-icons";
-import type { TFeedbackItem } from "../../utils/types";
-import { useState, type MouseEvent } from "react";
+import { type TFeedbackItem } from "../../lib/types";
 
 type FeedbackItemProps = {
-    feedbackItem: TFeedbackItem
+  feedbackItem: TFeedbackItem;
 };
 
 export default function FeedbackItem({ feedbackItem }: FeedbackItemProps) {
-    const [open, setOpen] = useState(false);
-    const [upvoteCount, setUpvoteCount] = useState(feedbackItem.upvoteCount)
+  const [open, setOpen] = useState(false);
+  const [upvoteCount, setUpvoteCount] = useState(feedbackItem.upvoteCount);
 
-    const handleFeedbackItemClick = () => {
-        setOpen(o => !o)
-    };
+  const handleUpvote = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setUpvoteCount((prev) => ++prev);
+    e.currentTarget.disabled = true;
+    e.stopPropagation();
+  };
 
-    const handleUpvoteClick = (e: MouseEvent<HTMLButtonElement>) => {
-        setUpvoteCount(u => ++u);
-        e.currentTarget.disabled = true;
-        e.stopPropagation();
+  return (
+    <li
+      onClick={() => setOpen((prev) => !prev)}
+      className={`feedback ${open ? "feedback--expand" : ""}`}
+    >
+      <button onClick={handleUpvote}>
+        <TriangleUpIcon />
+        <span>{upvoteCount}</span>
+      </button>
 
-    };
+      <div>
+        <p>{feedbackItem.badgeLetter}</p>
+      </div>
 
-    return (
-        <li 
-            onClick={handleFeedbackItemClick}
-            className={`feedback ${open ? 'feedback--expand' : ''}`}
-        >
-            <button onClick={handleUpvoteClick}>
-                <TriangleUpIcon />
-                <span>{upvoteCount}</span>
-            </button>
+      <div>
+        <p>{feedbackItem.company}</p>
+        <p>{feedbackItem.text}</p>
+      </div>
 
-            <div>
-                <p>{feedbackItem.badgeLetter}</p>
-            </div>
-
-            <div>
-                <p>{feedbackItem.company}</p>
-                <p>{feedbackItem.text}</p>
-            </div>
-
-            <p>{feedbackItem.daysAgo === 0 ? 'NEW' : `${feedbackItem.daysAgo}d`}</p>
-        </li>
-    )
+      <p>{feedbackItem.daysAgo === 0 ? "NEW" : `${feedbackItem.daysAgo}d`}</p>
+    </li>
+  );
 }
