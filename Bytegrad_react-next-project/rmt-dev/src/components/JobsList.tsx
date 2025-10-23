@@ -5,9 +5,9 @@ export default function JobsList() {
     <div className="jobs-list">
         <JobItem />
         <JobItem />
+        <JobItem active="job-item--active" bookmark="bookmark-syb-and-days--active"/>
         <JobItem />
-        <JobItem />
-        <JobItem />
+        <JobItem bookmark="bookmark-syb-and-days--active"/>
         <JobItem />
         <JobItem />
     </div>
