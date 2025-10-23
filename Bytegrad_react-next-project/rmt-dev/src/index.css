@@ -187,10 +187,11 @@ button, input {
 
 .job-item__acronym {
     text-align: center;
-    padding: 16px 12px;
+    padding: 16px 0;
     background-color: var(--grey-medium);
     border-radius: 10px;
     font-weight: bold;
+    width: 40px;
 }
 
 .job-item__text {
@@ -295,8 +296,11 @@ button, input {
 .content__title > div:nth-child(1) {
     background-color: rgb(219, 216, 3);
     border-radius: 5px;
-    padding: 22px 15px;
+    padding: 22px 0;
+    text-align: center;
+    width: 50px;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .content__title > div:nth-child(2) {
@@ -404,8 +408,9 @@ button, input {
 }
 
 .content__qualifications button{
-    background-color: var(--grey-light);
-    padding: 8px;
+    background-color: var(--grey-medium);
+    padding: 5px;
+    border-radius: 5px;
     color: grey;
     font-size: 13px;
 }
