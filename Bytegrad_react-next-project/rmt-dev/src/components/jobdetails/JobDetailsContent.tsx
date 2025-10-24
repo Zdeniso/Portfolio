@@ -8,14 +8,26 @@ import JobDetailsFooter from "./JobDetailsFooter"
 
 type JobDetailsContentProps = {
     jobHighligthed: TJobItem,
+    bookmarkedJobItems: number[],
+    onDeleteBookmarkedJobItem: (id: number) => void,
+    onAddBookmarkedJobItem: (id: number) => void,
 };
 
-export default function JobDetailsContent({ jobHighligthed }: JobDetailsContentProps) {
+export default function JobDetailsContent({ 
+    jobHighligthed,
+    bookmarkedJobItems,
+    onDeleteBookmarkedJobItem,
+    onAddBookmarkedJobItem }: JobDetailsContentProps) {
 
     return (       
         <div className="job-details__content">
             <JobDetailsContentTitle jobHighligthed={jobHighligthed} />
-            <JobDetailsContentDaysAndDescription jobHighligthed={jobHighligthed} />
+            <JobDetailsContentDaysAndDescription 
+                jobHighligthed={jobHighligthed}
+                bookmarkedJobItems={bookmarkedJobItems}
+                onDeleteBookmarkedJobItem={onDeleteBookmarkedJobItem}
+                onAddBookmarkedJobItem={onAddBookmarkedJobItem}
+            />
             <JobDetailsContentCaracteristics jobHighligthed={jobHighligthed} />
             <JobDetailsContentQualifications jobHighligthed={jobHighligthed} />
             <JobDetailsContentReviews jobHighligthed={jobHighligthed} />

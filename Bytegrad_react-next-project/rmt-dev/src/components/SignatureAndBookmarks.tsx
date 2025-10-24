@@ -1,12 +1,16 @@
 import AppSignature from "./AppSignature";
 import BookmarksButton from "./BookmarksButton";
 
-export default function SignatureAndBookmarks() {
+type SignatureAndBookmarksProps = {
+    onActiveBookmarkMenuClick: () => void
+};
+
+export default function SignatureAndBookmarks({ onActiveBookmarkMenuClick }: SignatureAndBookmarksProps) {
     return (
         <div className="signature-and-bookmarks">
             <AppSignature />
             <span> | </span>
-            <BookmarksButton />
+            <BookmarksButton onActiveBookmarkMenuClick={onActiveBookmarkMenuClick}/>
         </div>
     )
 }

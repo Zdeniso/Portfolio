@@ -1,6 +1,6 @@
-import type { jobItem } from "./types";
+import type { TJobItem } from "./types";
 
-export const fetchJobItemsData = async (): Promise<jobItem[] | null> => {
+export const fetchJobItemsData = async (): Promise<TJobItem[] | null> => {
     try {
         const response = await fetch('https://bytegrad.com/course-assets/projects/rmtdev/api/data');
         
@@ -9,7 +9,7 @@ export const fetchJobItemsData = async (): Promise<jobItem[] | null> => {
         }
 
         const data = await response.json();
-        const jobItemsFetched: jobItem[] = data.jobItems;
+        const jobItemsFetched: TJobItem[] = data.jobItems;
         return jobItemsFetched;
 
     } catch (error) {

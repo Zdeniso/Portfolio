@@ -7,30 +7,43 @@ import Pagination from "./Pagination"
 type JobsListContainerProps = {
     jobItems: TJobItem[],
     jobItemClicked: number,
-    onJobItemClicked: (id: number) => void
-}
+    bookmarkedJobItems: number[],
+    onJobItemClicked: (id: number) => void,
+};
 
-export default function JobsListContainer({ jobItems, jobItemClicked, onJobItemClicked }: JobsListContainerProps) {
+export default function JobsListContainer({ 
+    jobItems, 
+    jobItemClicked, 
+    bookmarkedJobItems, 
+    onJobItemClicked }: JobsListContainerProps) {
+
     const [actualPage, setActualPage] = useState(1);
+    const [isRelevantFilter, setIsRelevantFilter] = useState(true);
 
     // DERIVED VARIABLE
-    const showedItems = jobItems.slice(0 + actualPage * 7, 7 + actualPage * 7)
+    const sortedJobItems = isRelevantFilter ?
+        [...jobItems].sort((a, b) => b.relevanceScore - a.relevanceScore)
+        : [...jobItems].sort((a, b) => a.daysAgo - b.daysAgo);
+    
+    const showedItems = sortedJobItems.slice((actualPage - 1) * 7, actualPage * 7);
 
     // EVENT HANDLER
-    const handlePageIncrement = () => {
-        setActualPage(p => ++p)
-    };
-
-    const handlePageDecrement = () => {
-        setActualPage(p => --p)
-    };
+    const handlePageIncrement = () => setActualPage(p => ++p);
+    const handlePageDecrement = () => setActualPage(p => --p);
+    const handleRelevantFilter = () => setIsRelevantFilter(true);
+    const handleRecentFilter = () => setIsRelevantFilter(false);    
 
     return (
         <div className="jobs-list-container">
-            <JobsListContainerTop />
+            <JobsListContainerTop 
+                jobItems={jobItems}
+                isRelevantFilter={isRelevantFilter}
+                onRelevantFilter={handleRelevantFilter}
+                onRecentFilter={handleRecentFilter}/>
             <JobsList 
                 showedItems={showedItems}
                 jobItemClicked={jobItemClicked}
+                bookmarkedJobItems={bookmarkedJobItems}
                 onJobItemClicked={onJobItemClicked}
             />
             <Pagination

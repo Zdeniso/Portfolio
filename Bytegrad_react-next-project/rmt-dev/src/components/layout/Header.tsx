@@ -1,10 +1,16 @@
 import SignatureAndBookmarks from "../SignatureAndBookmarks";
 import SearchForm from "../SearchForm";
 
-export default function Header() {
+type HeaderProps = {
+    onActiveBookmarkMenuClick: () => void
+};
+
+export default function Header({ onActiveBookmarkMenuClick }: HeaderProps) {
     return (
         <header className="header">
-            <SignatureAndBookmarks />
+            <SignatureAndBookmarks 
+                onActiveBookmarkMenuClick={onActiveBookmarkMenuClick}
+            />
             <SearchForm />
         </header>
     )

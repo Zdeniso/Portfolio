@@ -140,9 +140,9 @@ button, input {
     margin-right: 5px;
 }
 
-.filter-symbol {
+/* .filter-symbol {
 
-}
+} */
 
 .filter-btn {
     background-color: var(--grey-medium);
@@ -207,9 +207,9 @@ button, input {
     font-style: italic;
 }
 
-.bookmark-syb-and-days {
+/* .bookmark-syb-and-days {
 
-}
+} */
 
 .bookmark-syb-and-days > svg {
     height: 18px;
@@ -269,6 +269,23 @@ button, input {
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.empty-details-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-details-container > h3 {
+    color: var(--grey-dark);
+    margin-bottom: 10px;
+}
+
+.empty-details-container p {
+    color: var(--grey-medium-dark)
 }
 
 .job-details__header {
@@ -335,7 +352,8 @@ button, input {
 .content__days-and-description > svg {
     height: 18px;
     padding-right: 20px;
-    fill: var(--grey-medium)
+    fill: var(--grey-medium);
+    cursor: pointer;
 }
 
 .content__days-and-description--active > svg {
@@ -498,6 +516,35 @@ button, input {
     background-color: white;
     border-radius: 6px;
 }
+
+.empty-bookmark-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    justify-content: center;
+    height: 100px;
+    color: var(--grey-dark);
+    gap: 5px;
+}
+
+.empty-bookmark-menu > h3 {
+    font-weight: bold;
+}
+
+.empty-bookmark-menu > p {
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.empty-bookmark-menu svg {
+    width: 20px;
+    fill: var(--grey-medium-dark)
+}
+
+
 
 /* SPINNER */
 .spinner {

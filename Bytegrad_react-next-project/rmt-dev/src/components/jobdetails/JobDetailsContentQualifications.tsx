@@ -13,7 +13,7 @@ export default function JobDetailsContentQualifications({ jobHighligthed }: JobD
                 <p>Other qualifications may apply</p>
             </div>
             <div>
-                {qualifications.map((qualification => <button >{qualification}</button>))}
+                {qualifications.map((qualification => <button key={qualification}>{qualification}</button>))}
             </div>
         </div>
     )

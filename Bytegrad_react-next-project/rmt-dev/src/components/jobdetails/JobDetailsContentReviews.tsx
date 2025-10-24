@@ -13,7 +13,7 @@ export default function JobDetailsContentReviews({ jobHighligthed }: JobDetailsC
                 <p>Recent things people are saying</p>
             </div>
             <div>
-                {reviews.map(review => <p>{review}</p>)}
+                {reviews.map(review => <p key={review}>{review}</p>)}
             </div>                    
         </div>
     )

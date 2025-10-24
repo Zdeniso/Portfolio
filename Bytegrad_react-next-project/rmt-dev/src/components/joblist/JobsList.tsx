@@ -4,10 +4,15 @@ import JobItem from "./JobItem";
 type JobsListProps = {
     showedItems: TJobItem[],
     jobItemClicked: number,
-    onJobItemClicked: (id: number) => void
+    bookmarkedJobItems: number[],
+    onJobItemClicked: (id: number) => void,
 };
 
-export default function JobsList({ showedItems, jobItemClicked, onJobItemClicked }: JobsListProps) {
+export default function JobsList({ 
+    showedItems, 
+    jobItemClicked, 
+    bookmarkedJobItems, 
+    onJobItemClicked }: JobsListProps) {  
 
     return (
         <div className="jobs-list">
@@ -16,6 +21,7 @@ export default function JobsList({ showedItems, jobItemClicked, onJobItemClicked
                     key={jobItem.id}
                     jobItem={jobItem}
                     active={jobItem.id === jobItemClicked}
+                    isBookmarked={bookmarkedJobItems.some(bookmarkedJobItem => bookmarkedJobItem === jobItem.id)}
                     onClick={() => onJobItemClicked(jobItem.id)}
                 />
             ))}     
