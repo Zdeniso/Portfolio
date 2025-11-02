@@ -1,0 +1,1 @@
+export type TPageContent = "home" | "events" | "details"
